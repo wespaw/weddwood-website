@@ -1,7 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
-import { ArrowLeft, ArrowRight, Play } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from './ui/dialog';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -11,9 +18,22 @@ interface VideoData {
   videoUrl?: string;
 }
 
-export const GalleryAndVideo = ({ images }: { images: string[] }) => {
+export interface GalleryItem {
+  images: {
+    src: string;
+    orientation?: 'landscape' | 'portrait';
+  }[];
+  title: string;
+  description: string;
+  instagramUrl: string;
+}
+
+export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+  const [activeModalImageIndex, setActiveModalImageIndex] = useState(0);
   const gallerySliderRef = useRef<Slider>(null);
+  const modalSliderRef = useRef<Slider>(null);
 
   const videos: VideoData[] = [
     { id: '1', thumbnail: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwaW5zcGlyYXRpb258ZW58MHx8fHwxNzc0OTY0ODE2fDA&ixlib=rb-4.1.0&q=80&w=1080' },
@@ -63,6 +83,21 @@ export const GalleryAndVideo = ({ images }: { images: string[] }) => {
     ]
   };
 
+  const modalImageSettings = {
+    dots: false,
+    infinite: selectedItem ? selectedItem.images.length > 1 : false,
+    speed: 450,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    beforeChange: (_current: number, next: number) => setActiveModalImageIndex(next),
+  };
+
+  useEffect(() => {
+    setActiveModalImageIndex(0);
+    modalSliderRef.current?.slickGoTo(0);
+  }, [selectedItem]);
+
   return (
     <div className="w-full relative">
       <style>{`
@@ -110,15 +145,25 @@ export const GalleryAndVideo = ({ images }: { images: string[] }) => {
           <div className="w-full md:w-[75%] lg:w-[70%]">
             <div className="-mx-2 md:-mx-4">
               <Slider className="gallery-slider !mb-0" ref={gallerySliderRef} {...gallerySettings}>
-                {images.map((img, idx) => (
-                  <div key={idx} className="px-2 md:px-4 outline-none">
-                    <div className="rounded-[32px] overflow-hidden aspect-[1.05/1] bg-[#e8e4db]">
+                {items.map((item) => (
+                  <div key={item.instagramUrl} className="px-2 md:px-4 outline-none">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedItem(item)}
+                      className="group relative block w-full cursor-pointer overflow-hidden rounded-lg bg-[#e8e4db] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B78E3F] focus-visible:ring-offset-4"
+                    >
+                      <div className="aspect-[1.05/1] overflow-hidden">
                       <img 
-                        src={img} 
-                        alt={`Gallery ${idx + 1}`} 
+                        src={item.images[0].src} 
+                        alt={item.title} 
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out"
                       />
-                    </div>
+                      </div>
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
+                        <p className="font-['Italiana'] text-2xl leading-tight text-white">{item.title}</p>
+                        <p className="mt-1 font-['Josefin_Sans'] text-sm font-light text-white/85">Tap to view story</p>
+                      </div>
+                    </button>
                   </div>
                 ))}
               </Slider>
@@ -156,6 +201,80 @@ export const GalleryAndVideo = ({ images }: { images: string[] }) => {
           </div>
         </motion.div>
       </div>
+
+      <Dialog open={selectedItem !== null} onOpenChange={(open) => !open && setSelectedItem(null)}>
+        {selectedItem && (
+          <DialogContent className="!w-[calc(100vw-2rem)] max-h-[94vh] !max-w-[calc(100vw-2rem)] gap-0 overflow-hidden rounded-lg border-0 bg-white p-0 shadow-2xl xl:!max-w-[1320px]">
+            <div className="grid max-h-[94vh] overflow-hidden md:h-[min(760px,calc(100vh-2rem))] md:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.75fr)]">
+              <div className="relative h-[52vh] overflow-hidden md:h-full">
+                <Slider ref={modalSliderRef} {...modalImageSettings} className="h-full [&_.slick-list]:h-full [&_.slick-slide>div]:h-full [&_.slick-slide]:h-full [&_.slick-track]:h-full">
+                  {selectedItem.images.map((image, index) => (
+                    <div key={image.src} className="h-full">
+                      <div className="h-full">
+                        <img
+                          src={image.src}
+                          alt={`${selectedItem.title} ${index + 1}`}
+                          className="block h-full w-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+                {selectedItem.images.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => modalSliderRef.current?.slickPrev()}
+                      className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/85 text-black shadow-lg transition-colors hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B78E3F]"
+                      aria-label="Previous image"
+                    >
+                      <ArrowLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => modalSliderRef.current?.slickNext()}
+                      className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/85 text-black shadow-lg transition-colors hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#B78E3F]"
+                      aria-label="Next image"
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                    <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-white/85 px-3 py-2 shadow-lg">
+                      {selectedItem.images.map((image, index) => (
+                        <button
+                          key={image.src}
+                          type="button"
+                          onClick={() => modalSliderRef.current?.slickGoTo(index)}
+                          className={`h-2 w-2 rounded-full transition-colors ${activeModalImageIndex === index ? 'bg-black' : 'bg-black/25 hover:bg-black/50'}`}
+                          aria-label={`View image ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              <div className="flex min-h-0 flex-col justify-between gap-8 overflow-y-auto bg-white p-6 md:p-8">
+                <DialogHeader>
+                  <DialogTitle className="font-['Italiana'] text-[clamp(2.25rem,4vw,4rem)] font-normal leading-none text-black">
+                    {selectedItem.title}
+                  </DialogTitle>
+                  <DialogDescription className="pt-4 font-['Josefin_Sans'] text-[17px] font-light leading-8 text-black">
+                    {selectedItem.description}
+                  </DialogDescription>
+                </DialogHeader>
+                <a
+                  href={selectedItem.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full cursor-pointer items-center justify-center gap-2 bg-[#474343] px-6 py-4 font-['Josefin_Sans'] text-lg font-extralight text-white transition-colors hover:bg-[#5a5454]"
+                >
+                  View Instagram Post
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
 
       {/* Video Section */}
       <motion.div 

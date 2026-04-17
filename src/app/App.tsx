@@ -9,19 +9,38 @@ import { motion } from 'motion/react';
 
 // Import images from Figma
 import imgWNewLogoJpg1 from '../imports/Desktop1-1/006ee68b0114e4d35a01a249b6cbf58c348daa03.png';
-import imgRectangle2 from '../imports/Desktop1-1/78b8aec9bd0ada37c7af32d7fce3f940eeca8e41.png';
-import imgRectangle3 from '../imports/Desktop1-1/109b38587a30fd9d38d4d26ae92cbd2d46b3294c.png';
-import imgRectangle4 from '../imports/Desktop1-1/c07235b63d9f19405366b42b109578caf46b800a.png';
-import imgRectangle5 from '../imports/Desktop1-1/95b2f87ef6d107ef9459b2f71aaf0c7355188c4f.png';
-import imgRectangle6 from '../imports/Desktop1-1/bb28f07ed4c69f84b047730f68bcc9ee06d090fe.png';
-import imgRectangle7 from '../imports/Desktop1-1/db277639cbc75a670e63759c310d443df331ad65.png';
-import imgChatGptImageMar302026082227Pm3 from '../imports/Desktop1-1/9346c396804208163b721c7c5286018408d0262e.png';
 import serviceIcon01 from '../assets/service-icon-01.png';
 import serviceIcon02 from '../assets/service-icon-02.png';
 import serviceIcon03 from '../assets/service-icon-03.png';
 import serviceIcon04 from '../assets/service-icon-04.png';
 import serviceIcon05 from '../assets/service-icon-05.png';
 import serviceIcon06 from '../assets/service-icon-06.png';
+import galleryChiehApril from '../assets/gallery-instagram/chieh-april.jpg';
+import galleryAndreMelissa from '../assets/gallery-instagram/andre-melissa.jpg';
+import galleryMorganKellyVintage from '../assets/gallery-instagram/morgan-kelly-vintage.jpg';
+import galleryChongCamellia from '../assets/gallery-instagram/chong-camellia.jpg';
+
+const galleryImageModules = import.meta.glob('../assets/gallery-instagram/full/*.{jpg,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>;
+
+function galleryImage(fileName: string) {
+  const image = galleryImageModules[`../assets/gallery-instagram/full/${fileName}`];
+
+  if (!image) {
+    throw new Error(`Missing gallery image: ${fileName}`);
+  }
+
+  return image;
+}
+
+function galleryImageSet(prefix: string, count: number, extension = 'jpg') {
+  return Array.from({ length: count }, (_, index) => ({
+    src: galleryImage(`${prefix}-${String(index + 1).padStart(2, '0')}.${extension}`),
+  }));
+}
 
 export default function App() {
   const services = [
@@ -72,6 +91,75 @@ export default function App() {
     }
   ];
 
+  const galleryItems = [
+    {
+      images: [
+        { src: galleryChiehApril },
+        ...galleryImageSet('chieh-april', 6),
+      ],
+      title: 'Chieh & April',
+      description: 'A simple, clean Korean-inspired wedding at Sheraton Kuching, balanced with luminous details, neon reflections, fairy crystals, and a carefully crafted arch.',
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DMHgSLTPCiw/'
+    },
+    {
+      images: [
+        { src: galleryAndreMelissa },
+        ...galleryImageSet('andre-melissa-part-1', 6),
+        ...galleryImageSet('andre-melissa-part-2', 9, 'webp'),
+      ],
+      title: 'Andre & Melissa',
+      description: "A personalised beach wedding at Pantai Puteri, Santubong, planned around the couple's story with crafted details, a rain-cleared ceremony, and soft romantic moments by the sea.",
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/CuTThVzP9sh/'
+    },
+    {
+      images: [
+        ...galleryImageSet('hao-beatrice-reception', 7),
+        ...galleryImageSet('hao-beatrice-rom', 4),
+      ],
+      title: 'Hao & Beatrice',
+      description: 'A Cove 55 celebration moving from warm autumn ROM florals to a forestry-inspired reception with natural arrangements, guest-friendly flow, crystal balls, and delicate fairy lights.',
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DWfyVQiD3-x/'
+    },
+    {
+      images: [
+        { src: galleryMorganKellyVintage },
+        ...galleryImageSet('morgan-kelly-vintage', 8),
+        ...galleryImageSet('morgan-kelly-old-courthouse', 4),
+        ...galleryImageSet('morgan-kelly-house', 1),
+      ],
+      title: 'Morgan & Kelly',
+      description: "A multi-theme wedding day layered with vintage styling, Old Courthouse character, bold colour choices, a handcrafted oval gold backdrop, and an oversized Double Happiness installation.",
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DVfihSDD8mA/'
+    },
+    {
+      images: [
+        { src: galleryChongCamellia },
+        ...galleryImageSet('chong-camellia', 5),
+      ],
+      title: 'Chong & Camellia',
+      description: "A bespoke reception concept with subtle Chinese elements, rabbit motifs from the couple's zodiac signs, and fireworks inspired by their lion dance performance.",
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DVfcMyjD3Jn/'
+    },
+    {
+      images: galleryImageSet('cherry-on-top', 12),
+      title: 'Cherry on Top',
+      description: 'A styled shoot brought to life from mood board and sketches, pairing cherry-inspired decoration, custom gown styling, magical makeup, and cinematic photography.',
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DKJUKDdPj6r/'
+    },
+    {
+      images: galleryImageSet('baby-shower', 1),
+      title: 'Baby Shower',
+      description: 'A sweet surprise baby shower at Sheraton Kuching, crafted with soft colour details and handmade name tags for a simple, pretty, meaningful celebration.',
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DMc8wlBvxYF/'
+    },
+    {
+      images: galleryImageSet('first-birthday-rabbit', 1),
+      title: 'First Birthday',
+      description: 'A whimsical first birthday celebration for a returning wedding couple, filled with soft florals and rabbit details for their little one.',
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DMc_gKlv9X0/'
+    }
+  ];
+
   return (
     <div className="min-h-screen overflow-x-clip bg-white">
       <div>
@@ -109,7 +197,11 @@ export default function App() {
       <section id="about" className="relative mx-auto max-w-[1440px] px-4 py-14 md:px-12 md:py-24">
         {/* Scrolling Image Stack with Fixated Header */}
         <ScrollImageStack
-          images={[imgRectangle2, imgRectangle3, imgRectangle4]}
+          images={[
+            galleryImage('stack-decoration-01.jpg'),
+            galleryImage('morgan-kelly-old-courthouse-01.jpg'),
+            galleryImage('cherry-on-top-01.jpg'),
+          ]}
           title={
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -197,7 +289,7 @@ export default function App() {
 
       {/* Gallery Section */}
       <section id="gallery" className="relative mx-auto max-w-[1440px] overflow-hidden px-4 py-16 md:px-12 md:py-24">
-        <GalleryAndVideo images={[imgRectangle4, imgRectangle5, imgRectangle6, imgRectangle4, imgRectangle5, imgRectangle6]} />
+        <GalleryAndVideo items={galleryItems} />
       </section>
 
       {/* Testimonials Section */}
