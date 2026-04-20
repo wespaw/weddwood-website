@@ -23,14 +23,14 @@ export function Header() {
     <motion.header 
       initial="hidden"
       animate="visible"
-      transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+      transition={{ staggerChildren: 0.16, delayChildren: 0.35 }}
       className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm"
     >
-      <nav className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-2.5 md:px-12 md:py-4">
-        <div className="hidden flex-1 items-center justify-start gap-8 md:flex">
+      <nav className="mx-auto flex max-w-[1680px] items-center justify-between px-4 py-2.5 md:px-10 md:py-4 lg:px-14">
+        <div className="hidden flex-1 items-center justify-start gap-12 lg:gap-16 md:flex">
           <motion.button 
             variants={navItemVariants}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => scrollToSection('about')}
             className="cursor-pointer font-['Josefin_Sans'] font-light text-xl hover:text-[#C8AE75] transition-colors"
           >
@@ -38,7 +38,7 @@ export function Header() {
           </motion.button>
           <motion.button 
             variants={navItemVariants}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => scrollToSection('services')}
             className="cursor-pointer font-['Josefin_Sans'] font-light text-xl hover:text-[#C8AE75] transition-colors"
           >
@@ -48,7 +48,7 @@ export function Header() {
         
         <motion.div 
           variants={navItemVariants}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="flex-shrink-0 cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
@@ -59,10 +59,10 @@ export function Header() {
           />
         </motion.div>
 
-        <div className="hidden flex-1 items-center justify-end gap-8 md:flex">
+        <div className="hidden flex-1 items-center justify-end gap-12 lg:gap-16 md:flex">
           <motion.button 
             variants={navItemVariants}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => scrollToSection('gallery')}
             className="cursor-pointer font-['Josefin_Sans'] font-light text-xl hover:text-[#C8AE75] transition-colors"
           >
@@ -70,7 +70,7 @@ export function Header() {
           </motion.button>
           <motion.button 
             variants={navItemVariants}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => scrollToSection('contact')}
             className="cursor-pointer font-['Josefin_Sans'] font-light text-xl hover:text-[#C8AE75] transition-colors"
           >

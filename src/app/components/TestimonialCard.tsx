@@ -11,7 +11,7 @@ export function TestimonialCard({ quote, client }: TestimonialCardProps) {
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
       className="relative flex min-h-[260px] flex-col items-center gap-5 overflow-hidden rounded-t-[20px] bg-white px-10 pb-7 pt-9"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[#d8c29a]" />

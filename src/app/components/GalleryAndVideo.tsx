@@ -47,7 +47,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
     responsive: [
@@ -111,95 +111,79 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
       `}</style>
 
       {/* Gallery Section */}
-      <div className="mb-14 flex flex-col gap-3 md:-ml-6 md:mb-32 md:flex-row md:gap-6 lg:-ml-12 lg:gap-10">
-        {/* Left Vertical Text */}
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+      <div className="mb-14 md:mb-28">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="md:w-[60px] lg:w-[80px] flex-shrink-0 flex items-start pt-4 z-10 pl-2 md:pl-0"
+          transition={{ duration: 1, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-6 flex items-center justify-between gap-6"
         >
-          <div className="hidden md:block">
-            <h2 
-              className="font-['Italiana'] text-[clamp(4rem,6vw,6rem)] leading-none text-black whitespace-nowrap"
-              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+          <h2 className="font-['Italiana'] text-[clamp(2.3rem,4vw,3.2rem)] leading-[1.18] text-black">
+            Gallery
+          </h2>
+          <div className="flex justify-center gap-3">
+            <button
+              onClick={() => gallerySliderRef.current?.slickPrev()}
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-[#A89F95] text-white transition-colors hover:bg-[#8f857b] focus:outline-none"
+              aria-label="Previous gallery image"
             >
-              Gallery
-            </h2>
-          </div>
-          <div className="mb-2 w-full md:hidden">
-            <h2 className="font-['Italiana'] text-[3.2rem] leading-none text-black">Gallery</h2>
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => gallerySliderRef.current?.slickNext()}
+              className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-[#A89F95] text-white transition-colors hover:bg-[#8f857b] focus:outline-none"
+              aria-label="Next gallery image"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </div>
         </motion.div>
 
-        {/* Right Gallery Carousel */}
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-1 min-w-0 flex flex-col"
+          transition={{ duration: 1.05, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
+          className="-mx-2 md:-mx-4"
         >
-          {/* Constrained container width allowing right-side to overflow */}
-          <div className="w-full md:w-[75%] lg:w-[70%]">
-            <div className="-mx-2 md:-mx-4">
-              <Slider className="gallery-slider !mb-0" ref={gallerySliderRef} {...gallerySettings}>
-                {items.map((item) => (
-                  <div key={item.instagramUrl} className="px-2 md:px-4 outline-none">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedItem(item)}
-                      className="group relative block w-full cursor-pointer overflow-hidden rounded-lg bg-[#e8e4db] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B78E3F] focus-visible:ring-offset-4"
-                    >
-                      <div className="aspect-[1.05/1] overflow-hidden">
-                      <img 
-                        src={item.images[0].src} 
-                        alt={item.title} 
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out"
-                      />
-                      </div>
-                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
-                        <p className="font-['Italiana'] text-2xl leading-tight text-white">{item.title}</p>
-                        <p className="mt-1 font-['Josefin_Sans'] text-sm font-light text-white/85">Tap to view story</p>
-                      </div>
-                    </button>
+          <Slider className="gallery-slider !mb-0" ref={gallerySliderRef} {...gallerySettings}>
+            {items.map((item) => (
+              <div key={item.instagramUrl} className="px-2 md:px-4 outline-none">
+                <button
+                  type="button"
+                  onClick={() => setSelectedItem(item)}
+                  className="group relative block w-full cursor-pointer overflow-hidden rounded-lg bg-[#e8e4db] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B78E3F] focus-visible:ring-offset-4"
+                >
+                  <div className="aspect-[1.28/1] overflow-hidden">
+                    <img
+                      src={item.images[0].src}
+                      alt={item.title}
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+                    />
                   </div>
-                ))}
-              </Slider>
-            </div>
-          </div>
-
-          {/* Controls - taking full width of the parent flex-1 column */}
-          <div className="mt-3 flex w-full flex-col items-center gap-3 pr-0 text-center md:mt-4 md:flex-row md:items-center md:justify-between md:pr-8 md:text-left">
-            <p className="max-w-[32rem] font-['Josefin_Sans'] text-[15px] font-light tracking-wide text-black md:text-[17px]">
-              View more of our portfolio and past creations on{' '}
-              <a
-                href="https://www.instagram.com/weddwooddesign/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cursor-pointer underline underline-offset-4 transition-colors hover:text-[#B78E3F]"
-              >
-                Instagram
-              </a>
-              .
-            </p>
-            <div className="flex justify-center gap-3">
-              <button 
-                onClick={() => gallerySliderRef.current?.slickPrev()}
-                className="cursor-pointer w-9 h-9 rounded-full bg-[#A89F95] text-white flex items-center justify-center hover:bg-[#8f857b] transition-colors focus:outline-none"
-              >
-                <ArrowLeft className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={() => gallerySliderRef.current?.slickNext()}
-                className="cursor-pointer w-9 h-9 rounded-full bg-[#A89F95] text-white flex items-center justify-center hover:bg-[#8f857b] transition-colors focus:outline-none"
-              >
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
+                    <p className="font-['Italiana'] text-2xl leading-tight text-white">{item.title}</p>
+                    <p className="mt-1 font-['Josefin_Sans'] text-sm font-light text-white/85">Tap to view story</p>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </Slider>
         </motion.div>
+
+        <p className="mt-5 max-w-[32rem] font-['Josefin_Sans'] text-[15px] font-light tracking-wide text-black md:text-[16px]">
+          View more of our portfolio and past creations on{' '}
+          <a
+            href="https://www.instagram.com/weddwooddesign/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer underline underline-offset-4 transition-colors hover:text-[#B78E3F]"
+          >
+            Instagram
+          </a>
+          .
+        </p>
       </div>
 
       <Dialog open={selectedItem !== null} onOpenChange={(open) => !open && setSelectedItem(null)}>
@@ -281,7 +265,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.15, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
         className="w-full max-w-5xl mx-auto"
       >
         {/* Main Video Area */}

@@ -1,20 +1,21 @@
 import { Header } from './components/Header';
-import { ServiceCard } from './components/ServiceCard';
 import { TestimonialCard } from './components/TestimonialCard';
 import { ContactForm } from './components/ContactForm';
-import { ScrollImageStack } from './components/ScrollImageStack';
 import { GalleryAndVideo } from './components/GalleryAndVideo';
 import { ChevronDown, Instagram, Facebook } from 'lucide-react';
 import { motion } from 'motion/react';
 
-// Import images from Figma
+// Import brand and content images
 import imgWNewLogoJpg1 from '../imports/Desktop1-1/006ee68b0114e4d35a01a249b6cbf58c348daa03.png';
-import serviceIcon01 from '../assets/service-icon-01.png';
-import serviceIcon02 from '../assets/service-icon-02.png';
-import serviceIcon03 from '../assets/service-icon-03.png';
-import serviceIcon04 from '../assets/service-icon-04.png';
-import serviceIcon05 from '../assets/service-icon-05.png';
-import serviceIcon06 from '../assets/service-icon-06.png';
+import aboutUsBanner from '../assets/about-us-banner.png';
+import supportImage from '../assets/support-image.png';
+import planWithUs from '../assets/plan-with-us.png';
+import styleWithUs from '../assets/style-with-us.png';
+import dressWithUs from '../assets/dress-with-us.png';
+import celebrateAndCreate from '../assets/celebrate-and-create.png';
+import bloomInStyle from '../assets/bloom-in-style.png';
+import styleSpaces from '../assets/style-spaces.png';
+import launchWithUs from '../assets/launching.png';
 import galleryChiehApril from '../assets/gallery-instagram/chieh-april.jpg';
 import galleryAndreMelissa from '../assets/gallery-instagram/andre-melissa.jpg';
 import galleryMorganKellyVintage from '../assets/gallery-instagram/morgan-kelly-vintage.jpg';
@@ -43,36 +44,42 @@ function galleryImageSet(prefix: string, count: number, extension = 'jpg') {
 }
 
 export default function App() {
-  const services = [
+  const experienceItems = [
     {
-      icon: serviceIcon01,
-      title: 'Wedding Decoration',
-      description: 'Elegant aisle setups, reception styling, stage backdrops, florals, tablescapes, and cohesive design concepts for modern couples.'
+      image: planWithUs,
+      imageClassName: 'object-contain',
+      title: 'Plan With Us',
+      description: 'We provide thoughtful guidance throughout your wedding journey, from venue selection and trusted vendor coordination to seamless planning and on-the-day execution. Every detail is managed with precision to ensure a smooth and meaningful experience.'
     },
     {
-      icon: serviceIcon02,
-      title: 'Event Planning',
-      description: 'Structured planning support for timelines, flow, venue coordination, and overall event experience from concept to execution.'
+      image: styleWithUs,
+      title: 'Style With Us',
+      description: 'We curate refined wedding styling through intentional design, atmosphere, and detail. Each concept is thoughtfully developed to reflect your vision with elegance, balance, and visual harmony.'
     },
     {
-      icon: serviceIcon03,
-      title: 'Birthday & Private Parties',
-      description: 'Sophisticated celebration styling for milestone birthdays, intimate gatherings, engagement events, and family occasions.'
+      image: dressWithUs,
+      title: 'Dress With Us',
+      description: 'We curate gowns and suits with a focus on refinement, fit, and timeless elegance. Each selection is guided by style, comfort, and individuality.'
     },
     {
-      icon: serviceIcon04,
-      title: 'Roadshows & Brand Events',
-      description: 'Professional, high-visibility setups that help brands stand out with confidence in retail, campaign, and experiential environments.'
+      image: celebrateAndCreate,
+      title: 'Celebrate & Create With Us',
+      description: 'We design birthday celebrations and proposals as intimate and meaningful experiences, shaped by personal stories and emotion. Every detail is thoughtfully considered to create a moment that feels sincere, intentional, and unforgettable.'
     },
     {
-      icon: serviceIcon05,
-      title: 'Gown & Suit Rental',
-      description: 'A thoughtfully selected collection of gowns and suits, offering timeless elegance and a seamless fit for your most memorable occasions.'
+      image: bloomInStyle,
+      title: 'Bloom in Style With Us',
+      description: 'We design floral concepts that bring softness, texture, and elegance into every celebration. With a focus on customised floral forms and sculptural arrangements, each piece is thoughtfully curated to complement your theme and elevate the overall atmosphere with refined detail.'
     },
     {
-      icon: serviceIcon06,
-      title: 'Custom Concept Styling',
-      description: 'Bespoke mood boards, decorative direction, and curated finishes designed around your theme, audience, and venue.'
+      image: styleSpaces,
+      title: 'Style Spaces With Us',
+      description: 'We design and transform hotel and mall spaces into refined visual experiences for seasonal campaigns, festive displays, and brand activations. Each space is thoughtfully curated with balance, atmosphere, and detail to create a lasting visual impression.'
+    },
+    {
+      image: launchWithUs,
+      title: 'Launch With Us',
+      description: 'We deliver impactful event experiences for roadshows, openings, and corporate launches. Each setup is executed with precision, clarity, and strong visual presence.'
     }
   ];
 
@@ -170,7 +177,7 @@ export default function App() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-[750px] mx-auto w-full"
         >
           <img 
@@ -183,7 +190,7 @@ export default function App() {
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          transition={{ duration: 1.15, delay: 1.2 }}
           className="absolute bottom-8 flex flex-col items-center gap-2 animate-bounce md:bottom-12"
         >
           <p className="font-['Josefin_Sans'] font-extralight text-lg text-black">
@@ -193,44 +200,78 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="relative mx-auto max-w-[1440px] px-4 py-14 md:px-12 md:py-24">
-        {/* Scrolling Image Stack with Fixated Header */}
-        <ScrollImageStack
-          images={[
-            galleryImage('stack-decoration-01.jpg'),
-            galleryImage('morgan-kelly-old-courthouse-01.jpg'),
-            galleryImage('cherry-on-top-01.jpg'),
-          ]}
-          title={
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full lg:max-w-4xl"
-            >
-              <h2 className="font-['Italiana'] text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] text-black md:pr-10">
-                Curated wedding and event styling with a polished luxury touch.
-              </h2>
-            </motion.div>
-          }
-          description={
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full lg:max-w-md lg:pl-2"
-            >
-              <p className="font-['Josefin_Sans'] font-extralight text-[18px] md:text-[20px] text-black leading-[1.85]">
-                Weddwood Design creates elegant weddings, immersive event styling, and polished guest experiences that feel effortless, elevated, and unforgettable.
-              </p>
-            </motion.div>
-          }
-        />
+      {/* About and Experience Section */}
+      <section id="about" className="relative mx-auto max-w-[1680px] px-4 py-12 md:px-10 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.15, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="overflow-hidden"
+        >
+          <img
+            src={aboutUsBanner}
+            alt="A lush Weddwood floral installation"
+            className="h-[220px] w-full object-cover md:h-auto"
+          />
+        </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-10 md:mt-56 md:grid-cols-12 md:gap-y-24">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.15, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="mx-auto max-w-5xl py-12 text-center md:py-16"
+        >
+          <h2 className="font-['Italiana'] text-[clamp(2.15rem,3.8vw,3.55rem)] leading-[1.08] text-black">
+            We Plan. We Style. You Celebrate.
+          </h2>
+          <p className="mx-auto mt-7 max-w-4xl font-['Josefin_Sans'] text-[16px] font-extralight leading-[1.95] text-black md:text-[18px]">
+            WW is a group of creatives with a total 20 years experience in art, craft and design. As an all-round creative agency, we share our eyes, our passions and our ideas to bring out the most impactful presentation in visual, textural and spatial artistry.
+          </p>
+          <div className="mx-auto my-8 h-14 w-px bg-[#d8d2cb]" aria-hidden="true" />
+          <p className="mx-auto max-w-3xl font-['Josefin_Sans'] text-[16px] font-extralight leading-[1.95] text-black md:text-[18px]">
+            We keep adding new touches to keep it a special event. Its all about details, memories and expectation. Let us help you create the most wonderful memory on your special day.
+          </p>
+        </motion.div>
+
+        <div className="mx-auto grid max-w-[1280px] items-end justify-center gap-12 py-8 md:grid-cols-[minmax(320px,1fr)_minmax(360px,0.88fr)] md:gap-10 md:py-16 lg:gap-16 xl:max-w-[1472px] xl:grid-cols-[minmax(0,742px)_minmax(480px,590px)] xl:gap-24 2xl:gap-32">
+          <motion.div
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.1, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden rounded-tr-[5rem] md:h-[430px] lg:h-[560px] xl:h-[650px] 2xl:h-[750px] 2xl:rounded-tr-[7rem]"
+          >
+            <img
+              src={supportImage}
+              alt="A styled table setting with candles and florals"
+              className="h-full min-h-[340px] w-full object-cover"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.1, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
+            className="mx-auto max-w-[620px] text-right md:mx-0 md:justify-self-center md:self-end"
+          >
+            <h2 className="font-['Italiana'] text-[clamp(2rem,2.8vw,2.75rem)] leading-[1.15] text-black">
+              The Journey with WW
+            </h2>
+            <div className="ml-auto mt-8 max-w-[590px] space-y-8 font-['Josefin_Sans'] text-[15px] font-extralight leading-[2.15] tracking-[0.02em] text-black md:text-[16px]">
+              <p className="ml-auto max-w-[560px]">
+                has never been just about planning and decoration. It's about the conversations, the ideas, the challenges, and the little moments we share along the way.
+              </p>
+              <p className="ml-auto max-w-[590px]">
+                For us, it's always about creating something truly special something that reflects who you are as a couple and turns your celebration into a memory that lasts forever.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="hidden">
           {/* Heading */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -279,16 +320,68 @@ export default function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="relative mx-auto max-w-[1440px] px-4 pb-16 pt-4 md:px-12 md:pb-24 md:pt-12">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
-          ))}
+      <section id="services" className="relative mx-auto max-w-[1680px] px-4 pb-14 pt-2 md:px-10 md:pb-20">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 text-center font-['Italiana'] text-[clamp(2rem,3vw,2.85rem)] leading-[1.1] text-black md:mb-14"
+        >
+          The WW Experience
+        </motion.h2>
+
+        <div className="space-y-20 md:space-y-28">
+          <div className="grid gap-x-7 gap-y-16 md:grid-cols-3">
+            {experienceItems.slice(0, 3).map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 1.25, delay: 0.35 + index * 0.24, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-0"
+              >
+                <div className="mb-5 aspect-[1/1] overflow-hidden bg-[#e9e6df] md:mb-6">
+                  <img src={item.image} alt={item.title} className={`h-full w-full ${item.imageClassName ?? 'object-cover'}`} />
+                </div>
+                <h3 className="mb-4 font-['Josefin_Sans'] text-[clamp(1.25rem,1.55vw,1.55rem)] font-normal leading-[1.2] text-black md:mb-5">
+                  {item.title}
+                </h3>
+                <p className="font-['Josefin_Sans'] text-[15px] font-extralight leading-[1.85] text-black md:text-[16px]">
+                  {item.description}
+                </p>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className="grid gap-x-7 gap-y-16 md:grid-cols-2 lg:grid-cols-4">
+            {experienceItems.slice(3).map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 1.25, delay: 0.4 + index * 0.22, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-0"
+              >
+                <div className="mb-5 aspect-[1/1] overflow-hidden bg-[#e9e6df] md:mb-6">
+                  <img src={item.image} alt={item.title} className={`h-full w-full ${item.imageClassName ?? 'object-cover'}`} />
+                </div>
+                <h3 className="mb-4 font-['Josefin_Sans'] text-[clamp(1.2rem,1.45vw,1.45rem)] font-normal leading-[1.2] text-black md:mb-5">
+                  {item.title}
+                </h3>
+                <p className="font-['Josefin_Sans'] text-[15px] font-extralight leading-[1.85] text-black md:text-[16px]">
+                  {item.description}
+                </p>
+              </motion.article>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="relative mx-auto max-w-[1440px] overflow-hidden px-4 py-16 md:px-12 md:py-24">
+      <section id="gallery" className="relative mx-auto max-w-[1680px] overflow-hidden px-4 py-14 md:px-10 md:py-20">
         <GalleryAndVideo items={galleryItems} />
       </section>
 
@@ -298,7 +391,7 @@ export default function App() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
           className="font-['Italiana'] text-[clamp(2.5rem,5vw,3.75rem)] leading-tight text-black text-center max-w-4xl mx-auto mb-12 md:mb-16"
         >
           Trust grows faster when the experience feels as good as it looks.
@@ -317,7 +410,7 @@ export default function App() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
           className="font-['Italiana'] text-[clamp(2.5rem,5vw,3.75rem)] leading-tight text-black max-w-2xl mb-12 md:mb-16"
         >
           Let's create an event experience that feels worth remembering.
@@ -328,7 +421,7 @@ export default function App() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
           >
             <ContactForm />
           </motion.div>
@@ -337,7 +430,7 @@ export default function App() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-8"
           >
             <div className="overflow-hidden rounded-3xl aspect-[5/4] border border-[#d8c29a]/60 bg-[#f7f3ec]">
@@ -391,7 +484,7 @@ export default function App() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.2, delay: 0.2 }}
           className="mx-auto max-w-[1440px] px-4 py-7 md:px-12 md:py-8"
         >
           <p className="font-['Josefin_Sans'] font-extralight text-sm text-black text-center">
