@@ -159,6 +159,8 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
                     <img
                       src={item.images[0].src}
                       alt={item.title}
+                      loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                     />
                   </div>
@@ -198,6 +200,8 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
                         <img
                           src={image.src}
                           alt={`${selectedItem.title} ${index + 1}`}
+                          loading="lazy"
+                          decoding="async"
                           className="block h-full w-full object-cover"
                         />
                       </div>
@@ -273,6 +277,8 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
           <img 
             src={videos[activeVideoIndex].thumbnail} 
             alt="Main video thumbnail" 
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover mix-blend-overlay opacity-80"
           />
           <div className="absolute inset-0 flex items-center justify-center">
@@ -289,6 +295,8 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
                   <img 
                     src={video.thumbnail} 
                     alt={`Thumbnail ${idx + 1}`} 
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover mix-blend-overlay"
                   />
                 </div>

@@ -156,6 +156,8 @@ export function ScrollImageStack({ images, title, description }: ScrollImageStac
                 <img
                   src={image}
                   alt={`Wedding decoration ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover"
                 />
               </div>

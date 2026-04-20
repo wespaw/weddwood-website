@@ -19,6 +19,8 @@ export function ServiceCard({ icon, title, description }: ServiceCardProps) {
         src={icon}
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="h-11 w-11 object-contain opacity-75"
       />
       <h3 className="font-['Josefin_Sans'] font-light text-[22px] text-black">

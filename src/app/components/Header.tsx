@@ -55,6 +55,8 @@ export function Header() {
           <img 
             src={weddwoodLogo} 
             alt="Weddwood Design" 
+            loading="lazy"
+            decoding="async"
             className="h-12 w-auto max-w-[122px] object-contain transition-transform duration-700 ease-in-out hover:scale-[1.03] md:h-20 md:max-w-[180px]"
           />
         </motion.div>

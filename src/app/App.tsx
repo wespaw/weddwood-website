@@ -183,6 +183,8 @@ export default function App() {
           <img 
             src={imgWNewLogoJpg1} 
             alt="Weddwood Design Logo" 
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto mix-blend-multiply"
           />
         </motion.div>
@@ -212,6 +214,8 @@ export default function App() {
           <img
             src={aboutUsBanner}
             alt="A lush Weddwood floral installation"
+            loading="lazy"
+            decoding="async"
             className="h-[220px] w-full object-cover md:h-auto"
           />
         </motion.div>
@@ -246,6 +250,8 @@ export default function App() {
             <img
               src={supportImage}
               alt="A styled table setting with candles and florals"
+              loading="lazy"
+              decoding="async"
               className="h-full min-h-[340px] w-full object-cover"
             />
           </motion.div>
@@ -343,7 +349,13 @@ export default function App() {
                 className="space-y-0"
               >
                 <div className="mb-5 aspect-[1/1] overflow-hidden bg-[#e9e6df] md:mb-6">
-                  <img src={item.image} alt={item.title} className={`h-full w-full ${item.imageClassName ?? 'object-cover'}`} />
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className={`h-full w-full ${item.imageClassName ?? 'object-cover'}`}
+                  />
                 </div>
                 <h3 className="mb-4 font-['Josefin_Sans'] text-[clamp(1.25rem,1.55vw,1.55rem)] font-normal leading-[1.2] text-black md:mb-5">
                   {item.title}
@@ -366,7 +378,13 @@ export default function App() {
                 className="space-y-0"
               >
                 <div className="mb-5 aspect-[1/1] overflow-hidden bg-[#e9e6df] md:mb-6">
-                  <img src={item.image} alt={item.title} className={`h-full w-full ${item.imageClassName ?? 'object-cover'}`} />
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className={`h-full w-full ${item.imageClassName ?? 'object-cover'}`}
+                  />
                 </div>
                 <h3 className="mb-4 font-['Josefin_Sans'] text-[clamp(1.2rem,1.45vw,1.45rem)] font-normal leading-[1.2] text-black md:mb-5">
                   {item.title}
