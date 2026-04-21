@@ -25,6 +25,7 @@ export interface GalleryItem {
   }[];
   title: string;
   description: string;
+  postDescription?: string;
   instagramUrl: string;
 }
 
@@ -153,7 +154,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
                 <button
                   type="button"
                   onClick={() => setSelectedItem(item)}
-                  className="group relative block w-full cursor-pointer overflow-hidden rounded-lg bg-[#e8e4db] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B78E3F] focus-visible:ring-offset-4"
+                  className="group relative block w-full cursor-pointer overflow-hidden bg-[#e8e4db] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#B78E3F] focus-visible:ring-offset-4"
                 >
                   <div className="aspect-[1.28/1] overflow-hidden">
                     <img
@@ -245,8 +246,8 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
                   <DialogTitle className="font-['Italiana'] text-[clamp(2.25rem,4vw,4rem)] font-normal leading-none text-black">
                     {selectedItem.title}
                   </DialogTitle>
-                  <DialogDescription className="pt-4 font-['Josefin_Sans'] text-[17px] font-light leading-8 text-black">
-                    {selectedItem.description}
+                  <DialogDescription className="mt-4 max-h-[28vh] overflow-y-auto whitespace-pre-line pr-3 font-['Josefin_Sans'] text-[16px] font-light leading-8 text-black md:max-h-[390px] md:text-[17px]">
+                    {selectedItem.postDescription ?? selectedItem.description}
                   </DialogDescription>
                 </DialogHeader>
                 <a
@@ -273,7 +274,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
         className="w-full max-w-5xl mx-auto"
       >
         {/* Main Video Area */}
-        <div className="relative mb-4 aspect-video overflow-hidden rounded-3xl bg-[#9c9489] group cursor-pointer md:mb-6">
+        <div className="relative mb-4 aspect-video overflow-hidden bg-[#9c9489] group cursor-pointer md:mb-6">
           <img 
             src={videos[activeVideoIndex].thumbnail} 
             alt="Main video thumbnail" 
@@ -291,7 +292,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
           <Slider {...thumbnailSettings}>
             {videos.map((video, idx) => (
               <div key={video.id} className="cursor-pointer px-1 py-2 outline-none md:px-3" onClick={() => setActiveVideoIndex(idx)}>
-                <div className={`rounded-xl md:rounded-2xl overflow-hidden aspect-[4/3] bg-[#9c9489] relative transition-all duration-300 ${activeVideoIndex === idx ? 'ring-2 ring-offset-4 ring-[#C8AE75]' : 'opacity-60 hover:opacity-100'}`}>
+                <div className={`overflow-hidden aspect-[4/3] bg-[#9c9489] relative transition-all duration-300 ${activeVideoIndex === idx ? 'ring-2 ring-offset-4 ring-[#C8AE75]' : 'opacity-60 hover:opacity-100'}`}>
                   <img 
                     src={video.thumbnail} 
                     alt={`Thumbnail ${idx + 1}`} 

@@ -18,7 +18,12 @@ import styleSpaces from '../assets/style-spaces.png';
 import launchWithUs from '../assets/launching.png';
 import galleryChiehApril from '../assets/gallery-instagram/chieh-april.jpg';
 import galleryAndreMelissa from '../assets/gallery-instagram/andre-melissa.jpg';
+import galleryMelAndre from '../assets/gallery-instagram/mel-andre.jpg';
+import galleryHaoBeatriceReception from '../assets/gallery-instagram/hao-beatrice-reception.jpg';
+import galleryHaoBeatriceRom from '../assets/gallery-instagram/hao-beatrice-rom.jpg';
 import galleryMorganKellyVintage from '../assets/gallery-instagram/morgan-kelly-vintage.jpg';
+import galleryMorganKellyOldCourthouse from '../assets/gallery-instagram/morgan-kelly-old-courthouse.jpg';
+import galleryKellyMorganHouse from '../assets/gallery-instagram/kelly-morgan-house.jpg';
 import galleryChongCamellia from '../assets/gallery-instagram/chong-camellia.jpg';
 
 const galleryImageModules = import.meta.glob('../assets/gallery-instagram/full/*.{jpg,webp}', {
@@ -106,36 +111,206 @@ export default function App() {
       ],
       title: 'Chieh & April',
       description: 'A simple, clean Korean-inspired wedding at Sheraton Kuching, balanced with luminous details, neon reflections, fairy crystals, and a carefully crafted arch.',
+      postDescription: `Chieh & April
+
+I remember when I first met April to discuss the decoration. She was very clear about what she wanted for her wedding, a simple, clean Korean wedding vibe, without the typical elements you often see in other weddings. I think we captured that vibe right from the first meeting.
+
+At the second meeting with her husband, I was surprised when Chieh requested more volume, so we had to find a balance that worked for both of them.
+
+We incorporated our own styling ideas and unique elements for this wedding. It was the first time we used so much lighting, neon lights, reflections, and our signature fairy crystals. We put a lot of effort and detail into crafting the arch. We also improved our flower arrangements to make them look more lively and natural.
+
+Besides being the decorators, we also played a big role in planning and coordinating the entire wedding. Compliments from the couple and their family mean so much to our whole crew.
+
+Venue - @sheratonkuching
+Decor - @weddwooddesign
+Planner - Wendy @enmawendylee
+Coordinate - @shannontwelve
+Floor Manager - @shann_zxuan
+
+Emcee - @emceeyann_111
+Makeup - @kenny_yeo_barbero
+Photographer - @terencecaptures
+Videographer - @motion.foundry
+Liveband - @amoreliveband
+Performer - @edmondwong1128`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DMHgSLTPCiw/'
     },
     {
       images: [
         { src: galleryAndreMelissa },
         ...galleryImageSet('andre-melissa-part-1', 6),
-        ...galleryImageSet('andre-melissa-part-2', 9, 'webp'),
       ],
       title: 'Andre & Melissa',
       description: "A personalised beach wedding at Pantai Puteri, Santubong, planned around the couple's story with crafted details, a rain-cleared ceremony, and soft romantic moments by the sea.",
+      postDescription: `Part 1
+
+Our first beach wedding setup in town was incredible and unforgettable. Grateful for the trust placed in us, we successfully planned and completed the event, with the rain miraculously stopping right before.
+
+The details and craftsmanship reflected an understanding of the couple's background, creating a personalised and meaningful wedding experience.
+
+Andre & Melissa
+Photographer @davischinphotography
+Planning + Full Setup + Decoration @weddwooddesign
+
+#beach #beachwedding #kuching #weddingplanning`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/CuTThVzP9sh/'
     },
     {
       images: [
-        ...galleryImageSet('hao-beatrice-reception', 7),
+        { src: galleryMelAndre },
+        ...galleryImageSet('andre-melissa-part-2', 9, 'webp'),
+      ],
+      title: 'Mel & Andre',
+      description: "A continued look at Andre and Melissa's beach celebration, with soft seaside details and a meaningful setup shaped around their story.",
+      postDescription: `Part 2
+
+Andre & Melissa
+
+A continued look at our first beach wedding setup in town, created with personalised details and careful craftsmanship for a celebration by the sea.
+
+Planning + Full Setup + Decoration @weddwooddesign
+Photographer @davischinphotography`,
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/CuTThVzP9sh/'
+    },
+    {
+      images: [
+        { src: galleryHaoBeatriceRom },
         ...galleryImageSet('hao-beatrice-rom', 4),
       ],
-      title: 'Hao & Beatrice',
-      description: 'A Cove 55 celebration moving from warm autumn ROM florals to a forestry-inspired reception with natural arrangements, guest-friendly flow, crystal balls, and delicate fairy lights.',
+      title: 'Hao & Beatrice ROM',
+      description: 'Warm autumn florals, touches of white, and a classic ROM arch created with trust, care, and long-distance planning.',
+      postDescription: `Hao & Beatrice
+ROM
+Part 1
+
+Hao is the brother of one of our previous MCO brides. Back then, we didn't get the chance to manage his sister's wedding, which was something we really missed out on. But we're so grateful she still thought of us and introduced her brother to our team.
+
+Both Hao and Beatrice are based in Adelaide, so all our meetings were done virtually with about a 2.5-hour time difference. Despite the distance, every discussion felt easy and natural like planning together with old friends.
+
+For their wedding, they entrusted us with our full services planning & coordination, decoration, the gown and suit from our sister company Wecouture. When couples place that level of trust in us, it truly means the world to our team.
+
+From the very beginning, Hao and Beatrice already knew the colour palette they loved for their ROM ceremony. Warm autumn tones paired with touches of white.
+
+And honestly, you can never go wrong with a classic arch setup for a ROM ceremony.
+We styled the space with rich autumn florals and hints of white to complement the groom's suit simple, timeless, and beautifully balanced.
+
+Some weddings are not just about the design, but also about the trust and connection built along the way. And this was definitely one of them.
+
+Planning - @enmawendylee
+Coor - @shannontwelve
+Decor - @weddwooddesign
+Gown and suit - @we_couture_
+
+Venue - @cove55sarawak
+
+Emcee - @mcanthonyvoon
+Mua - @kenny_yeo_barbero
+Photographer - @davischinphotography
+Videographer - @paperplanestudio.my`,
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DWfyVQiD3-x/'
+    },
+    {
+      images: [
+        { src: galleryHaoBeatriceReception },
+        ...galleryImageSet('hao-beatrice-reception', 7),
+      ],
+      title: 'Hao & Beatrice Reception',
+      description: 'A forestry-inspired dinner reception at Cove 55 with natural arrangements, soft fairy lights, and guest-friendly flow.',
+      postDescription: `Hao & Beatrice
+Reception
+Part 2
+
+The dinner reception was held at Cove 55 Sera Hall. One of our favourite venues for an intimate wedding setting.
+
+Hao and Beatrice envisioned a forestry, natural vibe something effortless, not overly structured, yet not too unkempt. After several rounds of meetings and brainstorming, we finally brought their vision to life.
+
+We designed the space to feel immersive and connected from the table arrangements to the placement of every decorative element. Even during the dinner program, we carefully considered how the flow and spacing would encourage guests to interact and mingle freely.
+
+This wasn't a typical wedding setup. It was warm, personal, and thoughtfully curated to bring people closer together.
+
+To complete the look, we leaned on a timeless colour palette, a perfect match for the forestry theme. With our signature crystal balls and delicate fairy lights woven throughout, everything came together in a soft, magical harmony.
+
+A truly memorable celebration and even years later, it still feels just as special!
+
+Planner - @enmawendylee
+Coordinator - @shannontwelve
+Decor - @weddwooddesign
+Gown and suit - @we_couture_
+Mua - @kenny_yeo_barbero
+
+Emcee - @mcanthonyvoon
+Photographer - @davischinphotography
+Videographer - @paperplanestudio.my
+Liveband - @akoustikconnexion`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DWfyVQiD3-x/'
     },
     {
       images: [
         { src: galleryMorganKellyVintage },
         ...galleryImageSet('morgan-kelly-vintage', 8),
+      ],
+      title: 'Morgan & Kelly Vintage',
+      description: "A richly layered vintage setup built around texture, character, and Kelly's bold sense of colour.",
+      postDescription: `Morgan & Kelly
+
+I still remember receiving Kelly's message while I was in the middle of traveling. Luckily, she was very patient and waited for my reply!
+
+For their wedding, Kelly requested four different decoration setups, each with a different theme, her house in the morning, Morgan's house, the ROM and tea ceremony, and finally the luncheon setup.
+
+I must say Kelly has a really strong sense of color combination and design. She knew exactly what she wanted. Even though some of the ideas were things we had never done before, she still gave us her full trust to bring everything to life.
+
+Part 1
+Creating this truly Instagram worthy vintage setup was a dream for us. At first, everyone was worried the background might look too busy or messy since we didn't cover everything with draping. But that's the beauty of vintage styling, the layers, textures, and character are what make it special.
+
+This project pushed us creatively, and I'm so glad we took on the challenge. Up until today, this remains one of my top three favorite decorations we have ever created.
+
+Styling & Deco - @weddwooddesign
+Wedding photographer - @lexchai`,
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DVfihSDD8mA/'
+    },
+    {
+      images: [
+        { src: galleryMorganKellyOldCourthouse },
         ...galleryImageSet('morgan-kelly-old-courthouse', 4),
+      ],
+      title: 'Morgan & Kelly Old Courthouse',
+      description: 'A vintage oriental ROM and tea ceremony palette designed to complement the character of the Old Courthouse.',
+      postDescription: `Morgan & Kelly
+Old Courthouse
+Part 2
+
+The ROM and tea ceremony were held at the same venue, the beautiful Old Courthouse. Kelly didn't want to overdecorate the space because the venue itself already has such a strong vintage character.
+
+She is truly a very bold bride when it comes to choosing colors. Every color she picked pushed me to explore a new palette. It's always exciting for me as a designer to see how different colors come together.
+
+The design itself was kept simple, but the color combination was carefully chosen to complement the vintage oriental atmosphere of the venue.
+
+Styling & Deco - @weddwooddesign
+Wedding photographer - @lexchai`,
+      instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DVfihSDD8mA/'
+    },
+    {
+      images: [
+        { src: galleryKellyMorganHouse },
         ...galleryImageSet('morgan-kelly-house', 1),
       ],
-      title: 'Morgan & Kelly',
-      description: "A multi-theme wedding day layered with vintage styling, Old Courthouse character, bold colour choices, a handcrafted oval gold backdrop, and an oversized Double Happiness installation.",
+      title: 'Kelly & Morgan House',
+      description: "A handcrafted gold oval backdrop and oversized Double Happiness installation for the couple's home setups.",
+      postDescription: `Kelly's House
+Part 3
+
+The gold background was definitely one of the most special pieces. It was a handcrafted installation and a higher budget element.
+
+Instead of the usual circle or square backdrop, we designed it in an oval shape to make it stand out. The overall look was unique, and Kelly chose a rare color combination to match perfectly with her modern cheongsam.
+
+Morgan's House
+Part 4
+
+A giant Double Happiness will never go wrong for a traditional setup.
+For Morgan's house, we created an oversized piece to match the scale of the house and make the whole setup feel balanced and grand.
+
+Styling & Deco - @weddwooddesign
+Wedding photographer - @lexchai`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DVfihSDD8mA/'
     },
     {
@@ -145,24 +320,61 @@ export default function App() {
       ],
       title: 'Chong & Camellia',
       description: "A bespoke reception concept with subtle Chinese elements, rabbit motifs from the couple's zodiac signs, and fireworks inspired by their lion dance performance.",
+      postDescription: `Chong & Camellia
+
+When i first met Camellia, she told me she wanted something special for their wedding decoration something with a touch of Chinese elements, but not too obvious or traditionally Chinese. At first, I thought... WHAT, that's both exciting and challenging at the same time!
+
+Since Camellia has a design background, she came up with a lovely idea. Both of their names start with the letter "C", and both of their Chinese zodiac signs are the Rabbit. So she ROUGHLY DRAW incorporating rabbit elements into the design.
+
+From there, we created a custom logo featuring Chong as a rabbit fishing for Camellia the rabbit. A fun and meaningful concept that represents them perfectly.
+
+To complement the subtle Chinese elements, we also designed a fireworks, inspired by the lion dance performance they planned during their reception. Camellia absolutely loved it!
+
+We always enjoy collaborating with our clients to turn their personal stories and ideas into something meaningful, creating decorations that are truly one of a kind and made just for them.
+
+Styling & Deco - @weddwooddesign
+Wedding Photography - @cremapictures___`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DVfcMyjD3Jn/'
     },
     {
       images: galleryImageSet('cherry-on-top', 12),
       title: 'Cherry on Top',
       description: 'A styled shoot brought to life from mood board and sketches, pairing cherry-inspired decoration, custom gown styling, magical makeup, and cinematic photography.',
+      postDescription: `Experience with Weddwood
+From my own visual mood board and rough sketches to the final look, we brought the theme 'Cherry on Top' to life! From the decoration styling to the custom-made dress designed specifically for the shoot, everything came together beautifully. The magical makeup by Kenny, and the incredible photography, lighting, and setup by Davis Chin and Michael Ngo, made this vision truly unforgettable.
+
+Cherry on Top
+@micnienie
+Art and styling - @enmawendylee
+Decoration - @weddwooddesign
+Gown - @we_couture_
+Mua - @kenny_yeo_barbero
+Photographer- @davischin87
+BTS - @michealngo_photography`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DKJUKDdPj6r/'
     },
     {
       images: galleryImageSet('baby-shower', 1),
       title: 'Baby Shower',
       description: 'A sweet surprise baby shower at Sheraton Kuching, crafted with soft colour details and handmade name tags for a simple, pretty, meaningful celebration.',
+      postDescription: `Baby shower
+
+A mother secretly planned a baby shower surprise for her daughter.
+
+She reached out to me while I was still traveling, hoping to create something special. We only got back to Kuching the day before the event, so time was really tight!
+
+She wanted something simple yet pretty! and I really wanted to make it meaningful. Right after landing around midnight, I stayed up late handcrafting name tags to match her chosen color theme. Every little detail came together to make it truly one of a kind.`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DMc8wlBvxYF/'
     },
     {
       images: galleryImageSet('first-birthday-rabbit', 1),
       title: 'First Birthday',
       description: 'A whimsical first birthday celebration for a returning wedding couple, filled with soft florals and rabbit details for their little one.',
+      postDescription: `Such a sweet moment when one of our wedding couples came back to us, this time for their baby girl's 1st birthday.
+
+Truly grateful to be part of yet another special chapter in their lives. After a few years, we got to meet again... now with their adorable little one.
+
+They went with a whimsical theme (a forever classic!), and of course it had to include her favorite... rabbits!`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DMc_gKlv9X0/'
     }
   ];
@@ -451,7 +663,7 @@ export default function App() {
             transition={{ duration: 1, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-8"
           >
-            <div className="overflow-hidden rounded-3xl aspect-[5/4] border border-[#d8c29a]/60 bg-[#f7f3ec]">
+            <div className="overflow-hidden aspect-[5/4] border border-[#d8c29a]/60 bg-[#f7f3ec]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.443347171557!2d110.36229929999999!3d1.5042522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fba7298f570ff3%3A0x4f3bd1bb86741a79!2sWeddwood%20Event%20Management!5e0!3m2!1sen!2smy!4v1774971643060!5m2!1sen!2smy"
                 width="600"
