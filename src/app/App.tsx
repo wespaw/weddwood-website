@@ -144,13 +144,13 @@ Performer - @edmondwong1128`,
       description: "A personalised beach wedding at Pantai Puteri, Santubong, planned around the couple's story with crafted details, a rain-cleared ceremony, and soft romantic moments by the sea.",
       postDescription: `Part 1
 
-Our first beach wedding setup in town was incredible and unforgettable. Grateful for the trust placed in us, we successfully planned and completed the event, with the rain miraculously stopping right before.
+Our first beach wedding setup  in town was incredible and unforgettable. Grateful for the trust placed in us, we successfully planned and completed the event, with the rain miraculously stopping right before.
 
 The details and craftsmanship reflected an understanding of the couple's background, creating a personalised and meaningful wedding experience.
 
-Andre & Melissa
-Photographer @davischinphotography
-Planning + Full Setup + Decoration @weddwooddesign
+Andre & Melissa 
+Photographer @davischinphotography 
+Planning + Full Setup + Decoration @weddwooddesign 
 
 #beach #beachwedding #kuching #weddingplanning`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/CuTThVzP9sh/'
@@ -276,14 +276,17 @@ Wedding photographer - @lexchai`,
       title: 'Morgan & Kelly Old Courthouse',
       description: 'A vintage oriental ROM and tea ceremony palette designed to complement the character of the Old Courthouse.',
       postDescription: `Morgan & Kelly
-Old Courthouse
-Part 2
 
-The ROM and tea ceremony were held at the same venue, the beautiful Old Courthouse. Kelly didn't want to overdecorate the space because the venue itself already has such a strong vintage character.
+I still remember receiving Kelly's message while I was in the middle of traveling. Luckily, she was very patient and waited for my reply!
 
-She is truly a very bold bride when it comes to choosing colors. Every color she picked pushed me to explore a new palette. It's always exciting for me as a designer to see how different colors come together.
+For their wedding, Kelly requested four different decoration setups, each with a different theme, her house in the morning, Morgan's house, the ROM and tea ceremony, and finally the luncheon setup.
 
-The design itself was kept simple, but the color combination was carefully chosen to complement the vintage oriental atmosphere of the venue.
+I must say Kelly has a really strong sense of color combination and design. She knew exactly what she wanted. Even though some of the ideas were things we had never done before, she still gave us her full trust to bring everything to life.
+
+Part 1
+Creating this truly Instagram worthy vintage setup was a dream for us. At first, everyone was worried the background might look too busy or messy since we didn't cover everything with draping. But that's the beauty of vintage styling, the layers, textures, and character are what make it special.
+
+This project pushed us creatively, and I'm so glad we took on the challenge. Up until today, this remains one of my top three favorite decorations we have ever created.
 
 Styling & Deco - @weddwooddesign
 Wedding photographer - @lexchai`,
@@ -296,18 +299,18 @@ Wedding photographer - @lexchai`,
       ],
       title: 'Kelly & Morgan House',
       description: "A handcrafted gold oval backdrop and oversized Double Happiness installation for the couple's home setups.",
-      postDescription: `Kelly's House
-Part 3
+      postDescription: `Morgan & Kelly
 
-The gold background was definitely one of the most special pieces. It was a handcrafted installation and a higher budget element.
+I still remember receiving Kelly's message while I was in the middle of traveling. Luckily, she was very patient and waited for my reply!
 
-Instead of the usual circle or square backdrop, we designed it in an oval shape to make it stand out. The overall look was unique, and Kelly chose a rare color combination to match perfectly with her modern cheongsam.
+For their wedding, Kelly requested four different decoration setups, each with a different theme, her house in the morning, Morgan's house, the ROM and tea ceremony, and finally the luncheon setup.
 
-Morgan's House
-Part 4
+I must say Kelly has a really strong sense of color combination and design. She knew exactly what she wanted. Even though some of the ideas were things we had never done before, she still gave us her full trust to bring everything to life.
 
-A giant Double Happiness will never go wrong for a traditional setup.
-For Morgan's house, we created an oversized piece to match the scale of the house and make the whole setup feel balanced and grand.
+Part 1
+Creating this truly Instagram worthy vintage setup was a dream for us. At first, everyone was worried the background might look too busy or messy since we didn't cover everything with draping. But that's the beauty of vintage styling, the layers, textures, and character are what make it special.
+
+This project pushed us creatively, and I'm so glad we took on the challenge. Up until today, this remains one of my top three favorite decorations we have ever created.
 
 Styling & Deco - @weddwooddesign
 Wedding photographer - @lexchai`,
@@ -322,7 +325,7 @@ Wedding photographer - @lexchai`,
       description: "A bespoke reception concept with subtle Chinese elements, rabbit motifs from the couple's zodiac signs, and fireworks inspired by their lion dance performance.",
       postDescription: `Chong & Camellia
 
-When i first met Camellia, she told me she wanted something special for their wedding decoration something with a touch of Chinese elements, but not too obvious or traditionally Chinese. At first, I thought... WHAT, that's both exciting and challenging at the same time!
+When i first met Camellia, she told me she wanted something special for their wedding decoration  something with a touch of Chinese elements, but not too obvious or traditionally Chinese. At first, I thought... WHAT, that's both exciting and challenging at the same time!
 
 Since Camellia has a design background, she came up with a lovely idea. Both of their names start with the letter "C", and both of their Chinese zodiac signs are the Rabbit. So she ROUGHLY DRAW incorporating rabbit elements into the design.
 
