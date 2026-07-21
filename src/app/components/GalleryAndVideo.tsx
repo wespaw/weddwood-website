@@ -23,10 +23,11 @@ export interface GalleryItem {
     src: string;
     orientation?: 'landscape' | 'portrait';
   }[];
-  title: string;
-  description: string;
+  category?: string;
+  title?: string;
+  description?: string;
   postDescription?: string;
-  instagramUrl: string;
+  instagramUrl?: string;
 }
 
 export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
@@ -120,7 +121,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
           transition={{ duration: 1, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6 flex items-center justify-between gap-6"
         >
-          <h2 className="font-['Italiana'] text-[clamp(2.3rem,4vw,3.2rem)] leading-[1.18] text-black">
+          <h2 className="font-['Josefin_Sans'] text-[clamp(2.3rem,4vw,3.2rem)] font-light leading-[1.18] text-black">
             Gallery
           </h2>
           <div className="flex justify-center gap-3">
@@ -150,7 +151,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
         >
           <Slider className="gallery-slider !mb-0" ref={gallerySliderRef} {...gallerySettings}>
             {items.map((item) => (
-              <div key={item.instagramUrl} className="px-2 md:px-4 outline-none">
+              <div key={item.instagramUrl ?? item.title ?? item.images[0].src} className="px-2 md:px-4 outline-none">
                 <button
                   type="button"
                   onClick={() => setSelectedItem(item)}
@@ -159,14 +160,16 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
                   <div className="aspect-[1.28/1] overflow-hidden">
                     <img
                       src={item.images[0].src}
-                      alt={item.title}
+                      alt={item.title ?? 'Portfolio image'}
                       loading="lazy"
                       decoding="async"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                     />
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
-                    <p className="font-['Italiana'] text-2xl leading-tight text-white">{item.title}</p>
+                    {item.title && (
+                      <p className="font-['Josefin_Sans'] text-2xl font-light leading-tight text-white">{item.title}</p>
+                    )}
                     <p className="mt-1 font-['Josefin_Sans'] text-sm font-light text-white/85">Tap to view story</p>
                   </div>
                 </button>
@@ -200,7 +203,7 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
                       <div className="h-full">
                         <img
                           src={image.src}
-                          alt={`${selectedItem.title} ${index + 1}`}
+                          alt={selectedItem.title ? `${selectedItem.title} ${index + 1}` : `Portfolio image ${index + 1}`}
                           loading="lazy"
                           decoding="async"
                           className="block h-full w-full object-cover"
@@ -243,22 +246,28 @@ export const GalleryAndVideo = ({ items }: { items: GalleryItem[] }) => {
               </div>
               <div className="flex min-h-0 flex-col justify-between gap-8 overflow-y-auto bg-white p-6 md:p-8">
                 <DialogHeader>
-                  <DialogTitle className="font-['Italiana'] text-[clamp(2.25rem,4vw,4rem)] font-normal leading-none text-black">
-                    {selectedItem.title}
-                  </DialogTitle>
-                  <DialogDescription className="mt-4 max-h-[28vh] overflow-y-auto whitespace-pre-line pr-3 font-['Josefin_Sans'] text-[16px] font-light leading-8 text-black md:max-h-[390px] md:text-[17px]">
-                    {selectedItem.postDescription ?? selectedItem.description}
-                  </DialogDescription>
+                  {selectedItem.title && (
+                    <DialogTitle className="font-['Josefin_Sans'] text-[clamp(2.25rem,4vw,4rem)] font-light leading-none text-black">
+                      {selectedItem.title}
+                    </DialogTitle>
+                  )}
+                  {(selectedItem.postDescription ?? selectedItem.description) && (
+                    <DialogDescription className="mt-4 max-h-[28vh] overflow-y-auto whitespace-pre-line pr-3 font-['Josefin_Sans'] text-[16px] font-light leading-8 text-black md:max-h-[390px] md:text-[17px]">
+                      {selectedItem.postDescription ?? selectedItem.description}
+                    </DialogDescription>
+                  )}
                 </DialogHeader>
-                <a
-                  href={selectedItem.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full cursor-pointer items-center justify-center gap-2 bg-[#474343] px-6 py-4 font-['Josefin_Sans'] text-lg font-extralight text-white transition-colors hover:bg-[#5a5454]"
-                >
-                  View Instagram Post
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+                {selectedItem.instagramUrl && (
+                  <a
+                    href={selectedItem.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full cursor-pointer items-center justify-center gap-2 bg-[#474343] px-6 py-4 font-['Josefin_Sans'] text-lg font-extralight text-white transition-colors hover:bg-[#5a5454]"
+                  >
+                    View Instagram Post
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                )}
               </div>
             </div>
           </DialogContent>

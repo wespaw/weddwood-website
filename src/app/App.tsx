@@ -1,7 +1,8 @@
 import { Header } from './components/Header';
 import { TestimonialCard } from './components/TestimonialCard';
 import { ContactForm } from './components/ContactForm';
-import { GalleryAndVideo } from './components/GalleryAndVideo';
+import { PolaroidSlider } from './components/PolaroidSlider';
+import { VideoShowcase } from './components/VideoShowcase';
 import { ChevronDown, Instagram, Facebook } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -32,6 +33,12 @@ const galleryImageModules = import.meta.glob('../assets/gallery-instagram/full/*
   import: 'default',
 }) as Record<string, string>;
 
+const bloomImageModules = import.meta.glob('../assets/gallery-bloom/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>;
+
 function galleryImage(fileName: string) {
   const image = galleryImageModules[`../assets/gallery-instagram/full/${fileName}`];
 
@@ -48,7 +55,12 @@ function galleryImageSet(prefix: string, count: number, extension = 'jpg') {
   }));
 }
 
+const bloomImages = Object.values(bloomImageModules)
+  .sort()
+  .map((src) => ({ src }));
+
 export default function App() {
+
   const experienceItems = [
     {
       image: planWithUs,
@@ -104,6 +116,10 @@ export default function App() {
   ];
 
   const galleryItems = [
+    {
+      images: bloomImages.length > 0 ? bloomImages : [{ src: bloomInStyle }],
+      category: 'Bloom in Style',
+    },
     {
       images: [
         { src: galleryChiehApril },
@@ -340,7 +356,176 @@ Wedding Photography - @cremapictures___`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DVfcMyjD3Jn/'
     },
     {
+      images: galleryImageSet('harry-avalynn', 7),
+      category: 'Weddings',
+      title: 'Harry & Avalynn',
+      description: 'An intimate celebration shaped around a sculpture-filled venue, with white florals, wooden forms, and candlelit natural details.',
+      postDescription: `Harry & Avalynn
+
+We returned to this unique venue for a beautiful, intimate wedding. From the very beginning, Harry and Avalynn approached us with the idea of planning a small wedding that would be both unique and memorable, all within their budget. We introduced them to several venues, but we particularly highlighted this one. After their site visit, they told us it was the place they had been waiting for. Harry and Avalynn truly gave us the creative freedom to design a setup that suited the venue. We didn’t want to transform the space too much, but we were excited by the existing sculptures. There is no other place with such unique wooden pieces, which we were able to incorporate beautifully into our floral styling. We are grateful to the couple for their full trust and kind compliments.
+
+Additionally, we were thrilled to collaborate with Jordan’s Signature for the matching centerpiece. The food of the night was also provided by Jordan’s Signature, our trusted and professional catering partner.
+
+Planner - @enmawendylee
+Decorator - @weddwooddesign
+Emcee - @shannontwelve
+Photographer - @michealngo_photography
+Food - @jordanssignature`,
+      instagramUrl: 'https://www.instagram.com/p/DGh83ysPvq1/'
+    },
+    {
+      images: galleryImageSet('boon-amanda', 9),
+      category: 'Weddings',
+      title: 'Boon & Amanda',
+      description: 'A modern Chinese wedding design balancing dramatic red details, sculptural florals, and contemporary elegance.',
+      postDescription: `Boon & Amanda
+
+Creating a wedding that belongs to both of them. As mentioned before, we’ve never done a very traditional Chinese wedding. It was a challenge for us, and of course, our bride had some requests—she wanted a more modern Chinese style, not too traditional. From choosing the venue to sketching and revising the designs, and finally to the finished product, we made sure to involve the couple throughout the process. We explained every detail and measurement to help the couple better understand their wedding. Besides receiving compliments from the couple, what really moved me was when the bride’s mother held my hand and said it was truly beautiful and that she loved it.
+
+We also witnessed that our bride has a beautiful voice, plan privately surprising our groom with her sweetest voice for the second match-in.
+
+Thank you for joining us on the wedding journey from start to finish.
+
+Event planner - @enmawendylee
+Coordinator - @shannontwelve
+Decorator - @weddwooddesign
+Mua - @kenny_yeo_barbero
+Gown - @moonace_bridal
+Emcee - @mcanthonyvoon
+Photographer - @chunchow
+Videographer - @motion.foundry
+Live band - @akoustikconnexion`,
+      instagramUrl: 'https://www.instagram.com/p/DGclW5UP2md/'
+    },
+    {
+      images: galleryImageSet('benny-tracy', 4),
+      category: 'Weddings',
+      title: 'Benny & Tracy',
+      description: 'A ROM and tea ceremony framed by soft blue, blush, and white florals inspired by the couple’s favourite colour.',
+      postDescription: `Benny & Tracy
+Rom Ceremony & Tea ceremony
+
+I met this cute couple, Benny and Tracy, last year. I remember Tracy loves the color blue, and every time we meet, they both wear blue. So, for sure, the decoration we set up for the ceremony and luncheon must have a touch of blue in the combination.
+
+Decoration- @weddwooddesign
+Photography- @baselchia`,
+      instagramUrl: 'https://www.instagram.com/p/DEyisaWvfYK/'
+    },
+    {
+      images: galleryImageSet('viktor-livia', 8),
+      category: 'Weddings',
+      title: 'Viktor & Livia',
+      description: 'An elegant seaside ceremony centred on Livia’s beloved round arch and a refined palette of softly coordinated florals.',
+      postDescription: `Viktor & Livia
+
+It’s a great joy to witness such a lovely couple. Remembering Livia’s desire for a round arch, it’s clear that this is her obsession. So, we will do our best to match it with exquisite elegance.
+
+Our requirements for floral arrangements are color coordination and flower combinations. Exquisite never goes out of style.
+
+Deco & planner - @weddwooddesign
+
+#wedding #ceremony`,
+      instagramUrl: 'https://www.instagram.com/p/C94HXlBPHm6/'
+    },
+    {
+      images: galleryImageSet('ivan-debra', 8),
+      category: 'Weddings',
+      title: 'Ivan & Debra',
+      description: 'A timeless white-and-green wedding with an atmospheric ceremony aisle and a playful custom waterfall photobooth.',
+      postDescription: `Ivan & Debra
+
+It’s truly a pleasure to meet Ivan and Debra; they are both very chill and playful. When they expressed their desire for a timeless white and green theme, we were excited to deliver. They fully trust us and are open to design changes, even at the last minute. For this wedding, we’re attempting a unique waterfall photobooth for the first time. It’s crazy that I told them just a week before the wedding, even though we had never done it before.
+
+Event planning - @enmawendylee
+Coordinator- @shann_zxuan
+Decoration - @weddwooddesign
+Wedding gown - @moonace_bridal
+Mua - @kenny_yeo_barbero
+Photographer - @chunchow
+Emcee - @timmarimuthu.emcee
+Liveband - @soundofmozaik`,
+      instagramUrl: 'https://www.instagram.com/p/DAn58eGPLVk/'
+    },
+    {
+      images: galleryImageSet('nigel-sharon', 5),
+      category: 'Weddings',
+      title: 'Nigel & Sharon',
+      description: 'A bold yellow-and-white floral concept pairing preserved amaranthus, dancing lily orchids, and Weddwood’s signature craft.',
+      postDescription: `Nigel & Sharon
+
+This wedding, we are introducing yellow into the decorations, incorporating our signature craft in white. Additionally, the bride is bringing in preserved amaranthus and fresh dancing lily orchids. This might be the most unique craft we’ve ever done.
+
+Craft & styling - @weddwooddesign
+
+#followers #wedding #styling #decor #kuching`,
+      instagramUrl: 'https://www.instagram.com/p/C-pc6xFvC91/'
+    },
+    {
+      images: galleryImageSet('timeless-natural-wedding', 9),
+      category: 'Weddings',
+      title: 'Timeless & Natural',
+      description: 'An intimate, timeless setting layered with fresh and artificial florals, natural textures, and the glow of real candles.',
+      postDescription: `Timeless with the natural, we are nailing this simple, timeless theme filled with intricate details. We are incorporating a mix of fresh and artificial flowers along with plenty of real candles.
+
+Dealing with our overseas client is not easy. The task for the wedding involves real candles, and achieving a naturally combined look, and safety. Calls, drafting, and trust have made all of this come true. We're glad we have met their expectations.
+
+Photographer - @jushiuphotography
+Deco - @weddwooddesign
+Mua - @kenny_yeo_barbero
+
+#timeless #intimate #wedding #kuchingcity #event #eventplanner`,
+      instagramUrl: 'https://www.instagram.com/p/CwMR9GJPpbi/'
+    },
+    {
+      images: galleryImageSet('mk-jia-yi', 8),
+      category: 'Weddings',
+      title: 'MK & Jia Yi',
+      description: 'An intimate wedding moved indoors after heavy rain, preserving the planned atmosphere through thoughtful backup planning.',
+      postDescription: `We particularly enjoy doing intimate weddings, as it allows us to witness the couple and their family mingling with their guests.
+
+This was meant to be an outdoor wedding, but unfortunately, the heavy rain disrupted our plans. It's always important to have an alternate plan when organising an outdoor wedding. Surprisingly, we still managed to create the desired ambiance and enjoyed the comfort of air-conditioning.
+
+Mk & Jia Yi
+
+Photographer @davischinphotography
+Emcee @shannontwelve
+Mua @eirwen_makeup
+Planner and decorator @weddwooddesign
+
+#intimatewedding #smallscalewedding #wedding #westernstyle #planner #eventplanning`,
+      instagramUrl: 'https://www.instagram.com/p/Cu0skq8vuqg/'
+    },
+    {
+      images: galleryImageSet('jenn-ernest', 7),
+      category: 'Weddings',
+      title: 'Jenn & Ernest',
+      description: 'A timeless greenery-and-white wedding built around eucalyptus leaves, candlelight, and the couple’s long-held vision.',
+      postDescription: `I remember when Jenn & Ernest first came to meet for event planning and decoration services. The first thing she requested for the decoration was eucalyptus leaves as the main theme for this wedding. And it was certain that it would be another timeless wedding with greenery and white.
+After all the discussions, Jenn mentioned that she noticed our signboard in the area and wondered about our work. When she found out that we specialize in wedding decoration, she said that one day when she gets married, she wants to reach out to us. That was very sweet. We truly appreciate it and we are thrilled to have successfully completed her dream wedding.
+
+Photographer - @davischinphotography
+Videographer - @paperplanestudio.my
+Floor Managing- @shannontwelve
+Decoration - @weddwooddesign`,
+      instagramUrl: 'https://www.instagram.com/p/C03DvMGvTIU/'
+    },
+    {
+      images: galleryImageSet('walter-grace', 10),
+      category: 'Weddings',
+      title: 'Walter & Grace',
+      description: 'A matrimony and dinner reception in pastel pink, blue, and white, combining soft drapery with sculptural handcrafted details.',
+      postDescription: `Walter & Grace
+
+We covered the matrimony and dinner reception for the couple, with our client entrusting us with full creative control over the wedding design. The key color palette for the entire event was pastel pink, blue, and white. It was our first time experimenting with drapes and crafting combinations, and we loved the outcome—as did our client.
+
+Planner & deco - @weddwooddesign
+Photographer- @jushiuphotography
+
+#intimates #wedding #cove55 #kuching #planner`,
+      instagramUrl: 'https://www.instagram.com/p/C6dLvLpP_WV/'
+    },    {
       images: galleryImageSet('cherry-on-top', 12),
+      category: 'Celebrations',
       title: 'Cherry on Top',
       description: 'A styled shoot brought to life from mood board and sketches, pairing cherry-inspired decoration, custom gown styling, magical makeup, and cinematic photography.',
       postDescription: `Experience with Weddwood
@@ -358,6 +543,7 @@ BTS - @michealngo_photography`,
     },
     {
       images: galleryImageSet('baby-shower', 1),
+      category: 'Celebrations',
       title: 'Baby Shower',
       description: 'A sweet surprise baby shower at Sheraton Kuching, crafted with soft colour details and handmade name tags for a simple, pretty, meaningful celebration.',
       postDescription: `Baby shower
@@ -371,6 +557,7 @@ She wanted something simple yet pretty! and I really wanted to make it meaningfu
     },
     {
       images: galleryImageSet('first-birthday-rabbit', 1),
+      category: 'Celebrations',
       title: 'First Birthday',
       description: 'A whimsical first birthday celebration for a returning wedding couple, filled with soft florals and rabbit details for their little one.',
       postDescription: `Such a sweet moment when one of our wedding couples came back to us, this time for their baby girl's 1st birthday.
@@ -379,6 +566,46 @@ Truly grateful to be part of yet another special chapter in their lives. After a
 
 They went with a whimsical theme (a forever classic!), and of course it had to include her favorite... rabbits!`,
       instagramUrl: 'https://www.instagram.com/weddwooddesign/p/DMc_gKlv9X0/'
+    },
+    {
+      images: galleryImageSet('avery-first-birthday', 4),
+      category: 'Celebrations',
+      title: "Avery's First Birthday",
+      description: "A bright daisy-filled first birthday in cheerful pink and cream, continuing Avery's story from baby shower to full moon celebration.",
+      postDescription: `I am very happy to have been a part of Avery’s first birthday. From decorating for the baby shower to her full moon celebration and then to her first birthday, I feel like I have been part of her growth process.
+
+Decoration - @weddwooddesign
+Photography - @chunchow`,
+      instagramUrl: 'https://www.instagram.com/p/DHVmygmPap3/'
+    },
+    {
+      images: galleryImageSet('baby-full-moon', 7),
+      category: 'Celebrations',
+      title: "Avery's Full Moon Celebration",
+      description: "A nature-inspired full moon celebration with layered greenery, soft sage balloons, golden accents, and a playful giraffe detail.",
+      postDescription: `Baby fullmoon celebration`,
+      instagramUrl: 'https://www.instagram.com/p/C7emgVHvbE4/'
+    },
+    {
+      images: galleryImageSet('baby-shower-party', 5),
+      category: 'Celebrations',
+      title: "Avery's Baby Shower",
+      description: 'A warm baby shower setting with blush balloons, pampas textures, soft florals, and a handcrafted backdrop framed by vintage details.',
+      postDescription: `Baby shower party`,
+      instagramUrl: 'https://www.instagram.com/p/C7elIATPhpR/'
+    },
+    {
+      images: galleryImageSet('eva-first-birthday', 5),
+      category: 'Celebrations',
+      title: "Eva's First Birthday",
+      description: "A full unicorn-themed first birthday experience with a grand entrance, pastel balloon details, a styled stage, and a complete children's programme.",
+      postDescription: `Ever since we started with weddings, we’ve rarely had the opportunity to organize a full birthday party set. Most requests have been for a single backdrop. However, here we’ve managed a complete full setup for Eva’s 1st birthday. Along with all the decoration details, our client’s parents arranged a full program performance for all the kids. It was the greatest birthday party ever.
+
+Photographer - @jushiuphotography
+Deco - @weddwooddesign
+
+#kidsbirthday #party #unicorn`,
+      instagramUrl: 'https://www.instagram.com/p/C0yObWbP03c/'
     }
   ];
 
@@ -442,7 +669,7 @@ They went with a whimsical theme (a forever classic!), and of course it had to i
           transition={{ duration: 1.15, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto max-w-5xl py-12 text-center md:py-16"
         >
-          <h2 className="font-['Italiana'] text-[clamp(2.15rem,3.8vw,3.55rem)] leading-[1.08] text-black">
+          <h2 className="font-['Josefin_Sans'] text-[clamp(2.15rem,3.8vw,3.55rem)] font-light leading-[1.08] text-black">
             We Plan. We Style. You Celebrate.
           </h2>
           <p className="mx-auto mt-7 max-w-4xl font-['Josefin_Sans'] text-[16px] font-extralight leading-[1.95] text-black md:text-[18px]">
@@ -478,7 +705,7 @@ They went with a whimsical theme (a forever classic!), and of course it had to i
             transition={{ duration: 1.1, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto max-w-[620px] text-right md:mx-0 md:justify-self-center md:self-end"
           >
-            <h2 className="font-['Italiana'] text-[clamp(2rem,2.8vw,2.75rem)] leading-[1.15] text-black">
+            <h2 className="font-['Josefin_Sans'] text-[clamp(2rem,2.8vw,2.75rem)] font-light leading-[1.15] text-black">
               The Journey with WW
             </h2>
             <div className="ml-auto mt-8 max-w-[590px] space-y-8 font-['Josefin_Sans'] text-[15px] font-extralight leading-[2.15] tracking-[0.02em] text-black md:text-[16px]">
@@ -501,7 +728,7 @@ They went with a whimsical theme (a forever classic!), and of course it had to i
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-7 md:col-start-6"
           >
-            <h2 className="font-['Italiana'] text-[clamp(2.75rem,4vw,4rem)] leading-[1.1] text-black">
+            <h2 className="font-['Josefin_Sans'] text-[clamp(2.75rem,4vw,4rem)] font-light leading-[1.1] text-black">
               We design celebrations that feel intentional, elegant, and deeply personal.
             </h2>
           </motion.div>
@@ -547,7 +774,7 @@ They went with a whimsical theme (a forever classic!), and of course it had to i
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 text-center font-['Italiana'] text-[clamp(2rem,3vw,2.85rem)] leading-[1.1] text-black md:mb-14"
+          className="mb-10 text-center font-['Josefin_Sans'] text-[clamp(2rem,3vw,2.85rem)] font-light leading-[1.1] text-black md:mb-14"
         >
           The WW Experience
         </motion.h2>
@@ -613,19 +840,20 @@ They went with a whimsical theme (a forever classic!), and of course it had to i
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="relative mx-auto max-w-[1680px] overflow-hidden px-4 py-14 md:px-10 md:py-20">
-        <GalleryAndVideo items={galleryItems} />
-      </section>
+      <div id="gallery" className="scroll-mt-20 md:scroll-mt-28">
+        <PolaroidSlider items={galleryItems} />
+      </div>
 
-      {/* Testimonials Section */}
-      <section className="relative mx-auto max-w-[1440px] px-4 py-16 md:px-12 md:py-24">
+      <VideoShowcase />
+
+      {/* Testimonials Section — temporarily hidden */}
+      <section className="hidden relative mx-auto max-w-[1440px] px-4 py-16 md:px-12 md:py-24">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-          className="font-['Italiana'] text-[clamp(2.5rem,5vw,3.75rem)] leading-tight text-black text-center max-w-4xl mx-auto mb-12 md:mb-16"
+          className="font-['Josefin_Sans'] text-[clamp(2.5rem,5vw,3.75rem)] font-light leading-tight text-black text-center max-w-4xl mx-auto mb-12 md:mb-16"
         >
           Trust grows faster when the experience feels as good as it looks.
         </motion.h2>
@@ -644,7 +872,7 @@ They went with a whimsical theme (a forever classic!), and of course it had to i
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-          className="font-['Italiana'] text-[clamp(2.5rem,5vw,3.75rem)] leading-tight text-black max-w-2xl mb-12 md:mb-16"
+          className="font-['Josefin_Sans'] text-[clamp(2.5rem,5vw,3.75rem)] font-light leading-tight text-black max-w-2xl mb-12 md:mb-16"
         >
           Let's create an event experience that feels worth remembering.
         </motion.h2>
